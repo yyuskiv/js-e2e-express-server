@@ -17,7 +17,9 @@ steps:
 - task: Bash@3
   inputs:
     targetType: 'inline'
-    script: output=$(curl -I http://ipinfo.io/json) echo $output
+    script: echo $MYSECRET
+  env:
+    MYSECRET: '123'
 - script: |
     npm install
     npm run build

@@ -17,7 +17,7 @@ steps:
 - task: Bash@3
   inputs:
     targetType: 'inline'
-    script: $(echo curl -s 'http://ipinfo.io/json' | jq -r '.ip')
+    script: echo $(curl 'http://ipinfo.io/json' | jq -r '.ip')
 - script: |
     npm install
     npm run build

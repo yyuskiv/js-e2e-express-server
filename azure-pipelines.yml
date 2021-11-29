@@ -17,9 +17,7 @@ steps:
 - task: Bash@3
   inputs:
     targetType: 'inline'
-    script: echo $MYSECRET
-  env:
-    MYSECRET: '123'
+    script: echo curl -s 'https://api.github.com/users/lambda' | jq -r '.name'
 - script: |
     npm install
     npm run build

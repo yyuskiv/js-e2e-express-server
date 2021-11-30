@@ -20,21 +20,21 @@ pool:
       inputs:
         instructions: 'Please validate the build configuration and resume'
         onTimeout: 'resume'
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: | 
-     ip=$(curl 'http://ipinfo.io/json' | jq -r '.ip')
-     echo $ip
-     echo $VAR
-  env:
-    VAR: "123"
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+        
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '10.x'
+      displayName: 'Install Node.js'
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: | 
+         ip=$(curl 'http://ipinfo.io/json' | jq -r '.ip')
+         echo $ip
+         echo $VAR
+      env:
+        VAR: "123"
+    - script: |
+       npm install
+       npm run build
+      displayName: 'npm install and build'
